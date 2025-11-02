@@ -7,15 +7,15 @@ enum enOperation
     Add = 1,
     Sub = 2,
     Mul = 3,
-    div = 4,
-    Mix = 5
+    Div = 4,
+    MixOp = 5
 };
 enum enLevel
 {
     Easy = 1,
     Med = 2,
     Hard = 3,
-    Mix = 4
+    MixLvl = 4
 };
 struct stQuestionInfo
 {
@@ -75,17 +75,20 @@ int SimpleCalculator(int op1, int op2, enOperation Operation) {
         return op1 - op2;
     case enOperation::Mul:
         return op1 * op2;
-    case enOperation::div:
+    case enOperation::Div:
         return op1 / op2;
+    default:
+        return 0;
     }
 }
+
 stQuestionInfo GenerateQuestion(enLevel Level, enOperation Operation) {
     stQuestionInfo QuestionInfo;
     int OP1 = 0, OP2 = 0;
-    if (Level == enLevel::Mix) {
+    if (Level == enLevel::MixLvl) {
         Level = (enLevel)RoundNumber(1, 3);
     }
-    if (Operation == enOperation::Mix) {
+    if (Operation == enOperation::MixOp) {
         Operation = (enOperation)RoundNumber(1, 4);
     }
     QuestionInfo.Level = Level;
@@ -125,10 +128,13 @@ char OperationSymbol(enOperation operation) {
         return '-';
     case enOperation::Mul:
         return '*';
-    case enOperation::div:
+    case enOperation::Div:
         return '/';
+    default:
+        return '?';
     }
 }
+
 void PrintQuestion(stQuestionInfo QuestionInfo) {
     cout << "\n";
     cout << QuestionInfo.op1 << endl;
