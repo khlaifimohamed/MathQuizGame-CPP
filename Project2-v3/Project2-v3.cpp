@@ -152,7 +152,7 @@ void AskAndCorrectQuestionListAnswers(stQuizzInfo& QuizzInfo) {
             QuizzInfo.RightAnswers++;
             QuizzInfo.QuestionList[i].AnswerResult = true;
             cout << "Right Answer :-)";
-            system("color 4E");
+            system("color 2E");
         }
         else
         {
@@ -160,7 +160,7 @@ void AskAndCorrectQuestionListAnswers(stQuizzInfo& QuizzInfo) {
             QuizzInfo.QuestionList[i].AnswerResult = false;
             cout << "Wrong Answer :-(";
             cout << "The right Answer is : " << QuizzInfo.QuestionList[i].CorrectAnswer << endl;
-            system("color 2E");
+            system("color 4E");
         }
     }
     if (QuizzInfo.RightAnswers > QuizzInfo.WrongAnswers) {
@@ -207,3 +207,4 @@ int main()
     srand((unsigned)time(NULL));
     STARTGAME();
 }
+
